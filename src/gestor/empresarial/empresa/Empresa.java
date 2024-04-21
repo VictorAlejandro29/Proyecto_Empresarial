@@ -1,22 +1,44 @@
 package gestor.empresarial.empresa;
 import gestor.empresarial.empleados.*;
-import gestor.errores.*;
-public final class Empresa {
-    String NombreEmpresa;
-    String RepresentanteLegal;
-    String telefono;
-    String RFC;
-    Empleados datosRH;
-    GestionErrores error;
-    public Empresa(String nombre, String direccion ){
+
+public final class Empresa { //esta clase no ofrece herencia, solo instancia
+    private String nombreEmpresa;
+    private String telefono;
+    private String rfc;
+    private String representanteLegal;
+    public Empleados datosRH;
+
+    public Empresa(String nombreEmpresa, String rfc, String telefono,String representanteLegal) {
+        this.nombreEmpresa=nombreEmpresa;
+        this.rfc=rfc;
+        this.telefono= telefono;
+        this.representanteLegal = representanteLegal;
+        datosRH= new Empleados();
+//        datosRH = ArregloInformacion.creandoInstanciaPrivada8349();
     }
-    public void setRepresentanteLegal(String nombreRepre){
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
-    public String getRepresentanteLegal(){
-        return "nombrerepre"; }
-    public void setTelefono(String tel) {
-    }
+
     public String getInfo() {
-        return "info";
+        String datos="";
+
+        datos += "Representante Legal: " + this.representanteLegal + "\n";
+        datos += "Empresa: " + this.nombreEmpresa + "\n";
+        datos += "RFC: " + this.rfc + "\n";
+        datos += "Teléfono empresarial: " + (this.telefono!=null ? this.telefono : "No registrado") + "\n";
+
+        return datos;
     }
+
+    public String getRepresentanteLegal() {
+        return representanteLegal;
+    }
+
+    public void setRepresentanteLegal(String repreentanteLegal)  {
+        this.representanteLegal = repreentanteLegal;
+    }
+
 }
+

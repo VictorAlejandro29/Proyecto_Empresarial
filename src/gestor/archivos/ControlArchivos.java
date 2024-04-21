@@ -1,18 +1,45 @@
 package gestor.archivos;
 
-public class ControlArchivos {
-    private String archivo;
-    public ControlArchivos(String a) {  }
-    public boolean crear(){
-        return true;
+import java.io.File;
+
+public abstract class ControlArchivos {
+    protected String archivo;
+
+    public ControlArchivos(String archivo) {
+        this.archivo = archivo;
     }
-    public boolean eliminar(){
+
+    public abstract boolean Crear();
+
+    public boolean Eliminar() {
+        File file = new File(archivo);
+        if (file.exists()) {
+            return file.delete();
+        }
         return false;
     }
-    public boolean cambiar(){
-        return true;
+
+    public boolean Cambiar(String nuevoNombre) {
+        File file = new File(archivo);
+        if (file.exists()) {
+            File nuevoArchivo = new File(nuevoNombre);
+            return file.renameTo(nuevoArchivo);
+        }
+        return false;
     }
-    public boolean mover(String nuevoLugar){
+
+    public boolean Mover(String nuevoDirectorio) {
+        File file = new File(archivo);
+        if (file.exists()) {
+            File nuevoDirectorioFile = new File(nuevoDirectorio);
+            if (!nuevoDirectorioFile.exists()) {
+                if (nuevoDirectorioFile.mkdirs()) {
+                    return file.renameTo(new File(nuevoDirectorioFile, file.getName()));
+                }
+            } else {
+                return file.renameTo(new File(nuevoDirectorioFile, file.getName()));
+            }
+        }
         return false;
     }
 }

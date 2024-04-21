@@ -1,48 +1,55 @@
 package gestor.empresarial.datos;
 
-public abstract class DatosPersonales {
-    int id;
-    String nombre;
-    String apellidos;
-    String correo;
-    String whatsapp;
+public abstract class DatosPersonales { //Esta clase no ofrece instancia, solo puede ofrecer herencia
+    private int id;
+    private String nombre;
+    private String apellidos;
+    private String correo;
+    private String whatsapp;
 
-    protected int getId(){
+    public int getId() {
         return id;
     }
-    protected void setId(int id){
-        this.id=id;
+
+    public void setId(int id) {
+        this.id = id;
     }
 
-    protected String getNombre() {
+    public String getNombre() {
+
         return nombre;
     }
 
-    protected void setNombre(String nombre) {
+    public void setNombre(String nombre) {
+
         this.nombre = nombre;
     }
 
-    protected String getApellidos() {
+    public String getApellidos() {
+
         return apellidos;
     }
 
-    protected void setApellidos(String apellidos) {
+    public void setApellidos(String apellidos) {
+
         this.apellidos = apellidos;
     }
 
-    protected String getCorreo() {
+    public String getCorreo() {
+
         return correo;
     }
 
-    protected void setCorreo(String correo) {
+    public void setCorreo(String correo) {
+
         this.correo = correo;
     }
 
-    protected String getWhatsapp() {
+    public String getWhatsApp() {
         return whatsapp;
     }
 
-    protected void setWhatsapp(String whatsapp) {
+    public void setWhatsApp(String whatsapp) {
         this.whatsapp = whatsapp;
     }
 }
